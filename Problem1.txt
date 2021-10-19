@@ -1,0 +1,51 @@
+local x = 999
+local y = 999
+local newpalin = ""
+local answer = 0
+local numOne
+local numTwo
+local backwardsString = ""
+local forwardString = ""
+
+while true do
+	for j = 0, 899, 1 do
+		--print(y)
+		
+		
+		newpalin = "" .. (x*y)
+		
+		if newpalin.length == 5 then
+			backwardsString = string.sub(newpalin, 5, 5) .. string.sub(newpalin, 4, 4)
+			forwardString = string.sub(newpalin, 1, 2)
+		else
+			backwardsString = string.sub(newpalin, 6, 6) .. string.sub(newpalin, 5, 5) .. string.sub(newpalin, 4, 4)
+			forwardString = string.sub(newpalin, 1, 3)
+		end
+		
+		
+		if forwardString == backwardsString then
+			
+			if x * y > answer then
+				print("answer found")
+				
+				answer = x * y
+				--print(answer)
+				numOne = "numOne is " .. x
+				numTwo = "numTwo is " .. y
+				break
+			end
+		else
+			y = y - 1
+		end
+	end
+	y = 999
+	x = x - 1
+	if x < 100 then
+		break
+	end
+	print(x)
+end
+
+print(answer)
+print(numOne)
+print(numTwo)
